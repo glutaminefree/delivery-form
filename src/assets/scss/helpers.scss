@@ -1,0 +1,8 @@
+.text-right {
+  text-align: right;
+}
+
+@for $i from 0 through 5 {
+  .mt-#{$i} { margin-top: $offset * $i !important; }
+  .pt-#{$i} { padding-top: $offset * $i !important; }
+}

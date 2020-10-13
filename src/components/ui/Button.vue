@@ -1,5 +1,5 @@
 <template lang="pug">
-  component.button(:class="classesList" @click="$emit('click')")
+  button.button(:class="classesList" @click="$emit('click')")
     ui-loading.button__loading(v-if="loading")
     slot
 </template>
