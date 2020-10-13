@@ -176,7 +176,7 @@ export default {
           throw new Error('query error');
         }
       } catch (e) {
-        console.log('form send error', e.message);
+        alert(`form send error\n${e.message}`);
       } finally {
         this.sending = false;
       }
