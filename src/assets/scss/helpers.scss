@@ -4,5 +4,44 @@
 
 @for $i from 0 through 5 {
   .mt-#{$i} { margin-top: $offset * $i !important; }
+  .mb-#{$i} { margin-bottom: $offset * $i !important; }
   .pt-#{$i} { padding-top: $offset * $i !important; }
+}
+
+.cols {
+  display: flex;
+  flex-direction: column;
+
+  @media (min-width: $bp-desktop) {
+    flex-direction: row;
+  }
+}
+.col {
+  &.is-half,
+  &.is-third {
+    flex-basis: 100%;
+
+    &:not(:last-child) {
+      margin-bottom: $offsetX2;
+    }
+  }
+
+  @media (min-width: $bp-desktop) {
+    &.is-half {
+      flex-basis: 50%;
+      margin-bottom: 0;
+
+      &:nth-child(2n + 1) {
+        margin-right: $offsetX2;
+      }
+    }
+    &.is-third {
+      flex-basis: 33.333%;
+
+      &:nth-child(3n + 1),
+      &:nth-child(3n + 2) {
+        margin-right: $offsetX2;
+      }
+    }
+  }
 }

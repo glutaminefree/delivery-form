@@ -33,7 +33,7 @@ export default {
 <style lang="scss" scoped>
 .form-item {
   & + & {
-    margin-top: $offset * 1.5;
+    margin-top: $offsetX2;
   }
 
   &__label {

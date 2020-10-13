@@ -9,6 +9,8 @@
   }
   @media (min-width: $bp-desktop) {
     max-width: 1200px;
+  }
+  @media (min-width: $bp-desktop + 40) {
     padding: 0;
   }
 }
@@ -97,7 +99,7 @@
     }
   }
 
-  @media (min-width: $bp-tablet) {
+  @media (min-width: $bp-desktop) {
     &__link {
       display: flex;
     }

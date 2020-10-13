@@ -18,34 +18,37 @@
               a.tabs__tab-title(href="#" @click.prevent="setActiveTab('Доставка')") Доставка
               .tabs__tab-content
                 form.form(@submit.prevent)
-                  ui-form-item(
-                    label="ФИО"
-                    :error=`
-                      ($v.delivery.fullName.$dirty && !$v.delivery.fullName.required)
-                        ? 'Обязательное поле'
-                        : ''
-                    `
-                  )
-                    ui-input(
-                      v-model="delivery.fullName"
-                      placeholder="Петров Иван Валерьевич"
-                      name="fullName"
-                      @blur="$v.delivery.fullName.$touch"
-                    )
-                  ui-form-item(
-                    label="Телефон"
-                    :error=`
-                      ($v.delivery.phone.$dirty && $v.delivery.phone.$error)
-                        ? 'Обязательное поле'
-                        : ''
-                    `
-                  )
-                    ui-input(
-                      v-model="delivery.phone"
-                      name="phone"
-                      mask="+7 (999) 999-99-99"
-                      @blur="$v.delivery.phone.$touch"
-                    )
+                  .cols.mb-2
+                    .col.is-half
+                      ui-form-item(
+                        label="ФИО"
+                        :error=`
+                          ($v.delivery.fullName.$dirty && !$v.delivery.fullName.required)
+                            ? 'Обязательное поле'
+                            : ''
+                        `
+                      )
+                        ui-input(
+                          v-model="delivery.fullName"
+                          placeholder="Петров Иван Валерьевич"
+                          name="fullName"
+                          @blur="$v.delivery.fullName.$touch"
+                        )
+                    .col.is-half
+                      ui-form-item(
+                        label="Телефон"
+                        :error=`
+                          ($v.delivery.phone.$dirty && $v.delivery.phone.$error)
+                            ? 'Обязательное поле'
+                            : ''
+                        `
+                      )
+                        ui-input(
+                          v-model="delivery.phone"
+                          name="phone"
+                          mask="+7 (999) 999-99-99"
+                          @blur="$v.delivery.phone.$touch"
+                        )
                   ui-form-item(
                     label="Адрес доставки"
                     :error=`
@@ -153,6 +156,7 @@ export default {
   methods: {
     setActiveTab(tabName) {
       this.activeTab = tabName;
+      this.$v.$reset();
     },
 
     async sendForm() {

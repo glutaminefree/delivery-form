@@ -29,6 +29,8 @@ export default {
 
   &__field {
     height: 160px;
+    padding-top: $offsetX2;
+    padding-bottom: $offsetX2;
   }
 }
 </style>

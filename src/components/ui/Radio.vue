@@ -1,5 +1,6 @@
 <template lang="pug">
   label.radio
+    i.radio__dot(:class="{'is-visible': checked}")
     input.radio__field(
       type="radio"
       v-model="localValue"
@@ -43,15 +44,32 @@ export default {
 .radio {
   $this: &;
 
-  display: inline-flex;
-  align-items: center;
+  position: relative;
+  display: flex;
+  align-items: flex-start;
   cursor: pointer;
 
   & + & {
     margin-top: $offset;
   }
 
+  &__dot {
+    position: absolute;
+    left: 9px;
+    top: 9px;
+    width: 5px;
+    height: 5px;
+    background-color: $color-hover;
+    border-radius: 50%;
+    opacity: 0;
+    transition: opacity $transition-duration;
+
+    &.is-visible {
+      opacity: 1;
+    }
+  }
   &__field {
+    flex-shrink: 0;
     appearance: none;
     width: 23px;
     height: 23px;
@@ -64,21 +82,6 @@ export default {
 
     &:checked {
       border-color: $color-hover;
-
-      & + #{$this}__label {
-        position: relative;
-
-        &:before {
-          content: '';
-          position: absolute;
-          left: -22px;
-          top: 6px;
-          width: 5px;
-          height: 5px;
-          background-color: $color-hover;
-          border-radius: 50%;
-        }
-      }
     }
     &:disabled {
       background-color: $color-disabled;
@@ -111,6 +114,16 @@ export default {
         border-color: $color-hover;
         outline: none;
       }
+    }
+  }
+
+
+  @media (min-width: $bp-desktop) {
+    display: inline-flex;
+
+    & + & {
+      margin-top: 0;
+      margin-left: $offsetX4;
     }
   }
 }
