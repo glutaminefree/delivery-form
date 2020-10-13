@@ -1,0 +1,23 @@
+@import '~normalize.css/normalize.css';
+@import '~@/assets/scss/elements.scss';
+@import 'https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap';
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+body {
+  min-width: 320px;
+  background: $color-white;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 14px;
+  color: $color-black;
+}
+a,
+a:hover {
+  text-decoration: none;
+}
+textarea {
+  resize: vertical;
+}

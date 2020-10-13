@@ -1,0 +1,32 @@
+$color-black: black;
+$color-white: white;
+$color-gray: #c3c9db;
+$color-gray-dark: #b8bed8;
+$color-disabled: #edeeef;
+$color-disabled-text: #8288a2;
+$color-error: #ff1e38;
+$color-hover: #0096da;
+
+$offset: 8px;
+$offsetX2: $offset * 2;
+$offsetX3: $offset * 3;
+$offsetX4: $offset * 4;
+$offsetX5: $offset * 5;
+
+$assetsPath: '~@/assets';
+// $imgPath: $assetsPath + '/images/';
+// $iconsPath: $assetsPath + '/icons/';
+
+$bp-tablet: 768px;
+$bp-desktop: 1200px;
+
+$font-weight-normal: 400;
+$font-weight-semibold: 500;
+$font-weight-bold: 600;
+
+$border-radius: 8px;
+$border-radius-big: 16px;
+
+$border: 1px solid $color-gray;
+
+$transition-duration: 0.4s;
