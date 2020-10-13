@@ -70,7 +70,22 @@
             .tabs__tab(:class="{'is-active': isPickup}")
               a.tabs__tab-title(href="#" @click.prevent="setActiveTab('Самовывоз')") Самовывоз
               .tabs__tab-content
-                span Dolor sit amet
+                ui-form-item(
+                  :error=`
+                    ($v.pickup.address.$dirty && !$v.pickup.address.required)
+                      ? 'Выберите адрес пункта выдачи'
+                      : ''
+                  `
+                )
+                  ui-radio(
+                    v-for="(address, key) in pickupAdresses"
+                    :key="`addr-${key}`"
+                    v-model="pickup.address"
+                    :option="key"
+                    :label="address"
+                  )
+                .text-right.mt-5
+                  ui-button.button(@click="sendForm" :loading="sending") Отправить
 </template>
 
 <script>
@@ -102,6 +117,10 @@ export default {
       },
       pickup: {
         address: '',
+      },
+      pickupAdresses: {
+        spotPesch: 'Пункт Выдачи заказов Песчаная улица, дом 13',
+        spotPodsos: 'Пункт Выдачи заказов Подсосенский переулок, 11',
       },
 
       sending: false,

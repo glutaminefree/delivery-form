@@ -54,10 +54,11 @@ export default {
   }
 
   &.is-loading {
+    position: relative;
     color: transparent !important;
 
     #{$this}__loading {
-      // position: absolute;
+      position: absolute;
       color: $color-white;
     }
   }

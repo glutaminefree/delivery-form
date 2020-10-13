@@ -1,9 +1,9 @@
 <template lang="pug">
   .loading
-    .loading__part
-    .loading__part
-    .loading__part
-    .loading__part
+    .loading__item
+    .loading__item
+    .loading__item
+    .loading__item
 </template>
 
 <script>
@@ -16,15 +16,15 @@ export default {
 .loading {
   display: inline-block;
   position: relative;
-  width: 20px;
-  height: 20px;
+  width: 26px;
+  height: 26px;
 
   &__item {
     box-sizing: border-box;
     display: block;
     position: absolute;
-    width: 16px;
-    height: 16px;
+    width: 22px;
+    height: 22px;
     margin: 2px;
     border: 2px solid $color-white;
     border-radius: 50%;
