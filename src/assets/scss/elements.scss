@@ -65,6 +65,18 @@
     }
 
     &-title {
+      display: flex;
+      width: 100%;
+      color: $color-hover;
+
+      &:after {
+        content: '';
+        width: 10px;
+        height: 7px;
+        margin-left: auto;
+        background: url($iconsPath + 'arrow.svg') no-repeat;
+        transition: transform $transition-duration;
+      }
     }
     &-content {
       display: none;
@@ -72,8 +84,15 @@
     }
 
     &.is-active {
-      #{$this}__tab-content {
-        display: block;
+      #{$this}__tab {
+        &-title {
+          &:after {
+            transform: rotate(180deg);
+          }
+        }
+        &-content {
+          display: block;
+        }
       }
     }
   }

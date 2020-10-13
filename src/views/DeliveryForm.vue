@@ -18,46 +18,55 @@
               a.tabs__tab-title(href="#" @click.prevent="setActiveTab('Доставка')") Доставка
               .tabs__tab-content
                 form.form(@submit.prevent)
-                  ui-form-item(:error=`
-                    ($v.delivery.fullName.$dirty && !$v.delivery.fullName.required)
-                      ? 'Обязательное поле'
-                      : ''
-                  `)
+                  ui-form-item(
+                    label="ФИО"
+                    :error=`
+                      ($v.delivery.fullName.$dirty && !$v.delivery.fullName.required)
+                        ? 'Обязательное поле'
+                        : ''
+                    `
+                  )
                     ui-input(
                       v-model="delivery.fullName"
                       placeholder="Петров Иван Валерьевич"
                       name="fullName"
                       @blur="$v.delivery.fullName.$touch"
                     )
-                  ui-form-item(:error=`
-                    ($v.delivery.phone.$dirty && !$v.delivery.phone.required)
-                      ? 'Обязательное поле'
-                      : ''
-                  `)
+                  ui-form-item(
+                    label="Телефон"
+                    :error=`
+                      ($v.delivery.phone.$dirty && $v.delivery.phone.$error)
+                        ? 'Обязательное поле'
+                        : ''
+                    `
+                  )
                     ui-input(
                       v-model="delivery.phone"
                       name="phone"
                       mask="+7 (999) 999-99-99"
                       @blur="$v.delivery.phone.$touch"
                     )
-                  ui-form-item(:error=`
-                    ($v.delivery.address.$dirty && !$v.delivery.address.required)
-                      ? 'Обязательное поле'
-                      : ''
-                  `)
+                  ui-form-item(
+                    label="Адрес доставки"
+                    :error=`
+                      ($v.delivery.address.$dirty && !$v.delivery.address.required)
+                        ? 'Обязательное поле'
+                        : ''
+                    `
+                  )
                     ui-input(
                       v-model="delivery.address"
                       name="address"
                       placeholder="Город, улица, дом"
                       @blur="$v.delivery.address.$touch"
                     )
-                  ui-form-item
+                  ui-form-item(label="Комментарий")
                     ui-textarea(
                       v-model="delivery.comment"
                       name="comment"
                     )
-                  .text-right.mt-3
-                    ui-button.button(@click="sendForm") Отправить
+                  .text-right.mt-5
+                    ui-button.button(@click="sendForm" :loading="sending") Отправить
             .tabs__tab(:class="{'is-active': isPickup}")
               a.tabs__tab-title(href="#" @click.prevent="setActiveTab('Самовывоз')") Самовывоз
               .tabs__tab-content
@@ -67,6 +76,7 @@
 <script>
 import { validationMixin } from 'vuelidate';
 import { requiredIf } from 'vuelidate/lib/validators';
+import maskedLength from '@/validators/maskedLength';
 
 // For demo purposes {
 const apiEmul = {
@@ -93,14 +103,19 @@ export default {
       pickup: {
         address: '',
       },
+
+      sending: false,
     };
   },
   validations() {
     return {
       delivery: {
         fullName: { required: requiredIf(function() { return this.isDelivery; }) },
-        phone: { required: requiredIf(function() { return this.isDelivery; }) },
         address: { required: requiredIf(function() { return this.isDelivery; }) },
+        phone: {
+          required: requiredIf(function() { return this.isDelivery; }),
+          maskedLength: maskedLength(18),
+        },
         comment: {},
       },
       pickup: {

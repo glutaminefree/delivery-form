@@ -27,21 +27,29 @@ export default {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  height: 32px;
-  padding: 0 $offsetX2;
+  height: 60px;
+  padding: 0 $offsetX5;
+  background-color: $color-hover;
   border: none;
-  border-radius: $border-radius;
+  border-radius: $border-radius-big;
   text-align: center;
   text-decoration: none;
-  font-size: 14px;
+  font-size: 16px;
   font-weight: $font-weight-normal;
   color: $color-white;
   cursor: pointer;
   transition-duration: $transition-duration;
-  transition-property: opacity, color, background-color;
+  transition-property: background-color, color;
 
+  &:hover {
+    background-color: #0081bc;
+  }
+  &:active {
+    background-color: #015d87;
+  }
   &:disabled {
-    opacity: 0.3;
+    background-color: $color-disabled;
+    color: $color-gray-dark;
     cursor: not-allowed;
   }
 

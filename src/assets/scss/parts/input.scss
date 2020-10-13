@@ -1,8 +1,8 @@
 @mixin input {
   &__field {
     width: 100%;
-    height: 42px;
-    padding: 0 $offsetX2;
+    height: 60px;
+    padding: 0 $offsetX3;
     background-color: $color-white;
     border: $border;
     border-radius: $border-radius;

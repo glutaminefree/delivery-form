@@ -26,5 +26,9 @@ export default {
 
 .textarea {
   @include input;
+
+  &__field {
+    height: 160px;
+  }
 }
 </style>

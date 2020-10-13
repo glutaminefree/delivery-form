@@ -1,5 +1,6 @@
 <template lang="pug">
   .form-item(:class="classesList")
+    label.form-item__label(v-if="label" v-html="label")
     .form-item__field
       slot
     fade-transition
@@ -10,6 +11,10 @@
 export default {
   name: 'UiFormItem',
   props: {
+    label: {
+      type: String,
+      default: '',
+    },
     error: {
       type: String,
       default: '',
@@ -31,6 +36,10 @@ export default {
     margin-top: $offset * 1.5;
   }
 
+  &__label {
+    display: block;
+    margin-bottom: $offset;
+  }
   &__error {
     display: block;
     margin-top: $offset / 2;

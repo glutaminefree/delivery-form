@@ -14,8 +14,7 @@ $offsetX4: $offset * 4;
 $offsetX5: $offset * 5;
 
 $assetsPath: '~@/assets';
-// $imgPath: $assetsPath + '/images/';
-// $iconsPath: $assetsPath + '/icons/';
+$iconsPath: $assetsPath + '/icons/';
 
 $bp-tablet: 768px;
 $bp-desktop: 1200px;
@@ -25,7 +24,7 @@ $font-weight-semibold: 500;
 $font-weight-bold: 600;
 
 $border-radius: 8px;
-$border-radius-big: 16px;
+$border-radius-big: 42px;
 
 $border: 1px solid $color-gray;
 
